@@ -24,7 +24,7 @@ geoj = json.load(f)
 
 def init_dashboard(flask_app):
     dash_app = dash.Dash(server=flask_app,
-                         routes_pathname_prefix="/",
+                         routes_pathname_prefix="/map/",
                          external_stylesheets=[dbc.themes.LUX],
                          )
 
@@ -34,6 +34,8 @@ def init_dashboard(flask_app):
             dbc.NavbarSimple(
                 children=[
                     dbc.NavItem(dbc.NavLink("Map", href="/map", id="map-link", style={"padding-right": "30px"})),
+                    dbc.NavItem(dbc.NavLink("Community", href="/community", id="community-link",
+                                            style={"padding-right": "30px"})),
                     dbc.NavItem(
                         dbc.Button("Logout", color='light', id="logout-link",
                                    style={"padding-left": "10px"},

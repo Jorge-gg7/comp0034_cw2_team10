@@ -26,4 +26,7 @@ def create_app(config_classname):
         from dash_app.index import init_dashboard
         app = init_dashboard(app)
 
+    from flask_app.community.routes import community_bp
+    app.register_blueprint(community_bp)
+
     return app
