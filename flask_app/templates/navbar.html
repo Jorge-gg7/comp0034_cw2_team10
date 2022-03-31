@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">London Business</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for("auth_bp.home") }}">Home</a>
+                </li>
+                {% if current_user.is_anonymous %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="/map/">Map Data</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="{{ url_for('auth_bp.signup') }}">Sign up</a>
+                    </li>
+                    <button class="btn-secondary">
+                        <a class="nav-link" href="{{ url_for('auth_bp.login') }}">Login</a>
+                    </button>
+                {% else %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for("auth_bp.create_post") }}">Create a post</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/map/">Map Data</a>
+                    </li>
+                   <button class="btn-secondary">
+                       <a class="nav-link" href="{{ url_for('auth_bp.logout') }}">Logout</a>
+                   </button>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

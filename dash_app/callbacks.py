@@ -1,12 +1,8 @@
-import dash
-import dash_bootstrap_components as dbc
-from dash import dcc, html
-from dash import Input, Output
-
-import pandas as pd
-import plotly_express as px
-
+from dash import Output, Input
 import json
+
+import plotly_express as px
+import pandas as pd
 
 df1 = pd.read_csv(
     '../datasets/business-demographics-updated.csv')
@@ -22,92 +18,7 @@ f = open(
 geoj = json.load(f)
 
 
-def init_dashboard(flask_app):
-    dash_app = dash.Dash(server=flask_app,
-                         routes_pathname_prefix="/map/",
-                         external_stylesheets=[dbc.themes.LUX],
-                         )
-
-    dash_app.layout = dbc.Container(fluid=True, children=[
-        dcc.Location(id='url', refresh=False),
-        dbc.Row(
-            dbc.NavbarSimple(
-                children=[
-                    dbc.NavItem(dbc.NavLink("Map", href="/map", id="map-link", style={"padding-right": "30px"})),
-                    dbc.NavItem(dbc.NavLink("Community", href="/community", id="community-link",
-                                            style={"padding-right": "30px"})),
-                    dbc.NavItem(
-                        dbc.Button("Logout", color='light', id="logout-link",
-                                   style={"padding-left": "10px"},
-                                   )
-                    )
-                ],
-                brand="London Businesses",
-                brand_href="/",
-                color='primary',
-                dark='True',
-                fluid=True,
-                class_name='navbar-expand-sm sticky-top',
-                style={"border-radius": "10px"}
-            )
-        ),
-        html.Br(),
-        dbc.Row(
-            dbc.Col(html.H2("Choropleth Map")
-                    , id='title')
-        ),
-
-        dbc.Row(
-            dbc.Col(
-                html.H5("Select the year on the dropdown menu that you want to explore and click on the boroughs to "
-                        "learn more about the businesses there!"), className='text-muted')
-        ),
-        dbc.Row(
-            dcc.Dropdown(id='slct_yr',
-                         options=[
-                             {"label": "2004", "value": 2004},
-                             {"label": "2005", "value": 2005},
-                             {"label": "2006", "value": 2006},
-                             {"label": "2007", "value": 2007},
-                             {"label": "2008", "value": 2008},
-                             {"label": "2009", "value": 2009},
-                             {"label": "2010", "value": 2010},
-                             {"label": "2011", "value": 2011},
-                             {"label": "2012", "value": 2012},
-                             {"label": "2013", "value": 2013},
-                             {"label": "2014", "value": 2014},
-                             {"label": "2015", "value": 2015},
-                             {"label": "2016", "value": 2016},
-                             {"label": "2017", "value": 2017},
-                             {"label": "2018", "value": 2018},
-                             {"label": "2019", "value": 2019},
-                         ],
-                         multi=False,
-                         value=2004,
-                         clearable=False,
-                         style={"width": "40%", "color": "black"}
-                         )
-        ),
-        html.Em(children=[
-            '*Data after 2019 is not available.*'
-        ]
-        ),
-        dbc.Row(children=[
-            dbc.Col(children=[
-                dcc.Graph(id='surv-graph')
-            ], style={'margin': '0'}, xs=12, sm=12, md=10, lg=10, xl=5),
-            dbc.Col(children=[
-                dcc.Graph(id='map')
-            ], style={'margin': '0'}, xs=12, sm=12, md=10, lg=10, xl=7)
-        ])
-    ])
-
-    init_callbacks(dash_app)
-
-    return dash_app.server
-
-
-def init_callbacks(dash_app):
+def register_callbacks(dash_app):
     @dash_app.callback([Output('map', 'figure')],
                        [Input('slct_yr', 'value')]
                        )
