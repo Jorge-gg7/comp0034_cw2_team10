@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for("auth_bp.home") }}">Home</a>
+                    <a class="nav-link" href="{{ url_for("main_bp.home") }}">Home</a>
                 </li>
                 {% if current_user.is_anonymous %}
                     <li class="nav-item">
@@ -22,7 +22,7 @@
                     </button>
                 {% else %}
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for("auth_bp.create_post") }}">Create a post</a>
+                    <a class="nav-link" href="{{ url_for("main_bp.new_post") }}">Create a post</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="/map/">Map Data</a>

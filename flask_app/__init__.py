@@ -29,12 +29,15 @@ def create_app(config_classname):
 
     login_manager.init_app(app)
     login_manager.login_view = "auth_bp.login"
+
     with app.app_context():
         db.Model.metadata.reflect(bind=db.engine)
 
-
     from flask_app.auth.routes import auth_bp
     app.register_blueprint(auth_bp)
+
+    from flask_app.main.routes import main_bp
+    app.register_blueprint(main_bp)
 
     return app
 

@@ -46,19 +46,6 @@ def get_safe_redirect():
     return '/'
 
 
-@auth_bp.route('/')
-def home():
-    if not current_user.is_anonymous:
-        name = current_user.first_name
-        flash(f'Hello {name}. ')
-    return render_template('home.html', title='Home page')
-
-
-@auth_bp.route('/create')
-def create_post():
-    return render_template('create_post.html', title='Creating a post!')
-
-
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm()
@@ -68,7 +55,7 @@ def login():
         next = request.args.get('next')
         if not is_safe_url(next):
             return abort(400)
-        return redirect(next or url_for('auth_bp.home'))
+        return redirect(next or url_for('main_bp.home'))
     return render_template('login.html', title='Login', form=login_form)
 
 
@@ -86,7 +73,7 @@ def signup():
             db.session.rollback()
             flash(f'Error, unable to register {form.email.data}. ', 'error')
             return redirect(url_for('auth_bp.signup'))
-        return redirect(url_for('auth_bp.home'))
+        return redirect(url_for('main_bp.home'))
     return render_template('signup.html', title='Sign Up', form=form)
 
 
@@ -94,4 +81,4 @@ def signup():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('auth_bp.home'))
+    return redirect(url_for('main_bp.home'))
