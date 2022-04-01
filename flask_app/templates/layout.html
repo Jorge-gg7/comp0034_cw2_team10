@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}" defer></script>
     <title>{{ title }}</title>
 </head>
 <body>
@@ -24,7 +25,5 @@
         {% block content %}{% endblock %}
     </div>
 </main>
-
- <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}" defer></script>
 </body>
 </html>
