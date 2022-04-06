@@ -12,24 +12,24 @@
                 </li>
                 {% if current_user.is_anonymous %}
                     <li class="nav-item">
-                    <a class="nav-link" href="/map/">Map Data</a>
+                        <a class="nav-link" href="/map/">Map Data</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="{{ url_for('auth_bp.signup') }}">Sign up</a>
+                        <a class="nav-link" href="{{ url_for('auth_bp.signup') }}">Sign up</a>
                     </li>
                     <button class="btn-secondary">
                         <a class="nav-link" href="{{ url_for('auth_bp.login') }}">Login</a>
                     </button>
                 {% else %}
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for("main_bp.new_post") }}">Create a post</a>
+                        <a class="nav-link" href="{{ url_for("main_bp.new_post") }}">Create a post</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="/map/">Map Data</a>
+                        <a class="nav-link" href="/map/">Map Data</a>
                     </li>
-                   <button class="btn-secondary">
-                       <a class="nav-link" href="{{ url_for('auth_bp.logout') }}">Logout</a>
-                   </button>
+                    <button class="btn-secondary">
+                        <a class="nav-link" href="{{ url_for('auth_bp.logout') }}">Logout</a>
+                    </button>
                 {% endif %}
             </ul>
         </div>

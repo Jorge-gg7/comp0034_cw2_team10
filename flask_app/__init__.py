@@ -31,6 +31,8 @@ def create_app(config_classname):
     login_manager.login_view = "auth_bp.login"
 
     with app.app_context():
+        # from flask_app.models import User, Post
+        # db.create_all()
         db.Model.metadata.reflect(bind=db.engine)
 
     from flask_app.auth.routes import auth_bp

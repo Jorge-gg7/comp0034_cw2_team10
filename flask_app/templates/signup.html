@@ -2,19 +2,22 @@
 {% from "_formhelpers.html" import render_field %}
 {% block content %}
     <br>
-    <div class="card" style="width: 400px; min-height: 450px; border-width: 3px; border-color: black; padding: 20px; margin: 0 auto; border-radius: 20px">
-    <h4 class="card-title" style="text-align: center">Create an account</h4>
-    <h6 class="card-subtitle mb-2 text-muted" style="text-align: center">Please enter your details below</h6>
-    {# Version using _formhelpers see: https://flask.palletsprojects.com/en/2.0.x/patterns/wtforms/#forms-in-templates #}
-    <form method=post action="{{ url_for('auth_bp.signup') }}">
-        {{ form.csrf_token }}
-        <dl>
-            {{ render_field(form.first_name, class="form-control") }}
-            {{ render_field(form.last_name, class="form-control") }}
-            {{ render_field(form.email, class="form-control") }}
-            {{ render_field(form.password, class="form-control") }}
-            {{ render_field(form.password_repeat, class="form-control") }}
-        </dl>
-        <p><button type="submit" class="btn btn-primary">Sign up</button></p>
-    </form>
+    <div class="card"
+         style="width: 400px; min-height: 450px; border-width: 3px; border-color: black; padding: 20px; margin: 0 auto; border-radius: 20px">
+        <h4 class="card-title" style="text-align: center">Create an account</h4>
+        <h6 class="card-subtitle mb-2 text-muted" style="text-align: center">Please enter your details below</h6>
+        {# Version using _formhelpers see: https://flask.palletsprojects.com/en/2.0.x/patterns/wtforms/#forms-in-templates #}
+        <form method=post action="{{ url_for('auth_bp.signup') }}">
+            {{ form.csrf_token }}
+            <dl>
+                {{ render_field(form.first_name, class="form-control") }}
+                {{ render_field(form.last_name, class="form-control") }}
+                {{ render_field(form.email, class="form-control") }}
+                {{ render_field(form.password, class="form-control") }}
+                {{ render_field(form.password_repeat, class="form-control") }}
+            </dl>
+            <p>
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </p>
+        </form>
 {% endblock %}
