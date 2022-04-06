@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
   <article class="media content-section">
+  <br>
+{#  <div class="card" style="width: 400px; min-height: 450px; border-width: 3px; border-color: black; padding: 20px; margin: 0 auto">#}
+    <h4 class="card-title">Would you like to update or delete your post?</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Your post will be displayed on our home page</h6>
+    <br>
+    <div class="card" style="display: auto; border-width: 2px; border-color: black; padding: 5px; border-radius: 20px">
     <div class="media-body">
       <div class="article-metadata">
         <a>{{ post.author.first_name }} {{ post.author.last_name }}</a>

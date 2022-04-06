@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\Brandon\PycharmProjects\flaskProject\datasets\datasets.sqlite</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="datasets [2]" uuid="32cfa25a-9daf-4c8c-9e1d-a17b16d2c5bc">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/datasets/datasets.sqlite</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

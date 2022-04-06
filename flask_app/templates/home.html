@@ -2,14 +2,17 @@
 {% block content %}
     {% for post in posts %}
         <article class="media content-section">
+        <br>
+            <div class="card" style="display: flex; border-width: 3px; border-color: black; padding: 20px; border-radius: 20px">
           <div class="media-body">
-            <div class="article-metadata">
-              <a>{{ post.author.first_name }} {{ post.author.last_name }}</a>
-              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d, %H:%M:%S') }}</small>
-            </div>
-            <h2><a class="article-title" href="{{ url_for('main_bp.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+              <div class="article-metadata">
+                  <h2><a class="article-title" href="{{ url_for('main_bp.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+                  <a>{{ post.author.first_name }} {{ post.author.last_name }}</a>
+                  <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d, %H:%M:%S') }}</small>
+              </div>
             <p class="article-content">{{ post.content }}</p>
           </div>
         </article>
     {% endfor %}
 {% endblock content %}
+
