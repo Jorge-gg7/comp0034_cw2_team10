@@ -1,11 +1,17 @@
 {% extends 'layout.html' %}
 {% from "_formhelpers.html" import render_field %}
 {% block content %}
+    <br>
+    <div class="card" style="width: 400px; min-height: 450px; border-width: 3px; border-color: black; padding: 20px; margin: 0 auto; border-radius: 20px">
+    <h4 class="card-title" style="text-align: center">Login</h4>
+    <h6 class="card-subtitle mb-2 text-muted" style="text-align: center">Please enter your details below</h6>
     <form method=post action="{{ url_for('auth_bp.login') }}">
         {{ form.csrf_token }}
         {{ render_field(form.email, class="form-control") }}
         {{ render_field(form.password, class="form-control") }}
         {{ render_field(form.remember, class="form-check-input") }}
-    <p><button type="submit" class="btn btn-primary">Login</button></p>
+    <p><button type="submit" class="btn btn-primary d-grid">Login</button></p>
     </form>
+        <p class="card-subtitle">Don't have an account?</p>
+    <a class="card-subtitle" href="{{ url_for('auth_bp.signup') }}">Sign up</a>
 {% endblock %}
